@@ -50,16 +50,13 @@ const MovieDetails = () => {
       .catch((err) => console.log(err))
   }
 
-  const deleteComment = () => {
-    fetch(
-      'https://striveschool-api.herokuapp.com/api/comments/' + params.movieId,
-      {
-        method: 'DELETE',
-        headers: {
-          Authorization: API_KEY,
-        },
-      }
-    )
+  const deleteComment = (id) => {
+    fetch('https://striveschool-api.herokuapp.com/api/comments/' + id, {
+      method: 'DELETE',
+      headers: {
+        Authorization: API_KEY,
+      },
+    })
       .then((res) => {
         if (res.ok) {
           getComments()
@@ -159,7 +156,7 @@ const MovieDetails = () => {
             </Col>
           </Row>
           <Row className="mb-5">
-            <h1>Commenti</h1>
+            <h1 className="mb-4">Commenti</h1>
             <Col xs={12} lg={7}>
               {comments.map((el) => (
                 <div key={el._id}>
@@ -182,39 +179,34 @@ const MovieDetails = () => {
               ))}
             </Col>
             <Col xs={12} lg={5}>
-              <Form
-                className="d-flex flex-column justify-content-between h-100"
-                onSubmit={addComment}
-              >
-                <div>
-                  <Form.Group className="mb-2">
-                    <Form.Label>Valutazione (da 1 a 5 stelle)</Form.Label>
-                    <Form.Select
-                      value={rate}
-                      onChange={(e) => setRate(e.target.value)}
-                    >
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                    </Form.Select>
-                  </Form.Group>
-                  <Form.Group className="mb-2">
-                    <Form.Label>Aggiungi un commento</Form.Label>
-                    <Form.Control
-                      as="textarea"
-                      rows={6}
-                      value={comment}
-                      onChange={(e) => setComment(e.target.value)}
-                      required
-                    />
-                  </Form.Group>
-                </div>
+              <Form className="d-flex flex-column" onSubmit={addComment}>
+                <Form.Group className="mb-2">
+                  <Form.Label>Valutazione (da 1 a 5 stelle)</Form.Label>
+                  <Form.Select
+                    value={rate}
+                    onChange={(e) => setRate(e.target.value)}
+                  >
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </Form.Select>
+                </Form.Group>
+                <Form.Group className="mb-2">
+                  <Form.Label>Aggiungi un commento</Form.Label>
+                  <Form.Control
+                    as="textarea"
+                    rows={6}
+                    value={comment}
+                    onChange={(e) => setComment(e.target.value)}
+                    required
+                  />
+                </Form.Group>
                 <Button
                   type="submit"
                   variant="secondary"
-                  className="align-self-end"
+                  className="align-self-end mt-2"
                 >
                   INVIA
                 </Button>
