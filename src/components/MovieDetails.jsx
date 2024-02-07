@@ -1,5 +1,13 @@
 import { useEffect, useState } from 'react'
-import { Badge, Button, Col, Container, Form, Row } from 'react-bootstrap'
+import {
+  Badge,
+  Button,
+  Col,
+  Container,
+  Form,
+  Row,
+  Spinner,
+} from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
 
 const API_KEY =
@@ -11,8 +19,10 @@ const MovieDetails = () => {
   const [comments, setComments] = useState([])
   const [comment, setComment] = useState('')
   const [rate, setRate] = useState('1')
+  const [isLoading, setIsLoading] = useState(true)
+  // const [isError, setIsError] = useState(false)
 
-  const movieData = () => {
+  const getMovieData = () => {
     fetch('http://www.omdbapi.com/?apikey=82c26041&i=' + params.movieId)
       .then((res) => {
         if (res.ok) {
@@ -22,6 +32,7 @@ const MovieDetails = () => {
         }
       })
       .then((data) => {
+        setIsLoading(false)
         setMovieObj(data)
       })
       .catch((err) => console.log(err))
@@ -94,7 +105,7 @@ const MovieDetails = () => {
   }
 
   useEffect(() => {
-    movieData()
+    getMovieData()
     getComments()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -110,13 +121,22 @@ const MovieDetails = () => {
 
   return (
     <>
-      {movieObj && (
+      {isLoading && (
+        <div className="text-center mt-5">
+          <Spinner variant="danger"></Spinner>
+        </div>
+      )}
+      {movieObj && !isLoading && (
         <Container className="text-white mt-5">
           <Row className="justify-content-center mb-4">
-            <Col xs={4} className="d-flex justify-content-center">
-              <img src={movieObj.Poster} alt={movieObj.imdbID} />
+            <Col xs={12} md={4} className="d-none d-md-block">
+              <img
+                src={movieObj.Poster}
+                alt={movieObj.imdbID}
+                className="w-100"
+              />
             </Col>
-            <Col xs={8}>
+            <Col xs={12} md={8}>
               <h1 className="me-3">{movieObj.Title}</h1>
               <Badge bg="danger" pill className="mb-3">
                 Rated: {movieObj.Rated}
@@ -156,8 +176,8 @@ const MovieDetails = () => {
             </Col>
           </Row>
           <Row className="mb-5">
-            <h1 className="mb-4">Commenti</h1>
-            <Col xs={12} lg={7}>
+            <h1 className="mb-4">Comments</h1>
+            <Col xs={12} lg={7} className="mb-4 mb-lg-0">
               {comments.map((el) => (
                 <div key={el._id}>
                   <div className="d-flex justify-content-between">
@@ -181,7 +201,7 @@ const MovieDetails = () => {
             <Col xs={12} lg={5}>
               <Form className="d-flex flex-column" onSubmit={addComment}>
                 <Form.Group className="mb-2">
-                  <Form.Label>Valutazione (da 1 a 5 stelle)</Form.Label>
+                  <Form.Label>Rate (1 to 5 stars)</Form.Label>
                   <Form.Select
                     value={rate}
                     onChange={(e) => setRate(e.target.value)}
@@ -194,7 +214,7 @@ const MovieDetails = () => {
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-2">
-                  <Form.Label>Aggiungi un commento</Form.Label>
+                  <Form.Label>Add a comment</Form.Label>
                   <Form.Control
                     as="textarea"
                     rows={6}
@@ -208,7 +228,7 @@ const MovieDetails = () => {
                   variant="secondary"
                   className="align-self-end mt-2"
                 >
-                  INVIA
+                  SEND
                 </Button>
               </Form>
             </Col>

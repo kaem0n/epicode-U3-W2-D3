@@ -24,6 +24,7 @@ const searchText = [
   { searchTerm: 'american', title: 'Storie Americane' },
   { searchTerm: 'transformers', title: 'Perché hai visto Transformers' },
   { searchTerm: 'x men', title: 'Perché hai visto X-Men' },
+  { searchTerm: 'spiderman', title: 'Perché hai visto Spiderman' },
   {
     searchTerm: 'naked&20gun',
     title: 'Perché hai visto Una Pallottola Spuntata',

@@ -10,9 +10,9 @@ const MyNavbar = () => {
     <>
       <Navbar collapseOnSelect expand="lg" data-bs-theme="dark">
         <Container fluid>
-          <Navbar.Brand href="#home">
+          <Link className="navbar-brand" to="/">
             <img src="images/netflix-logo.png" alt="logo" height="55px" />
-          </Navbar.Brand>
+          </Link>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
@@ -64,7 +64,7 @@ const MyNavbar = () => {
               <Link to="/kids" className="nav-link fw-bold text-white">
                 KIDS
               </Link>
-              <Link to="/notifications" className="nav-link text-white me-3">
+              <Link to="/settings" className="nav-link text-white me-3">
                 <i className="bi bi-bell icons fs-5 mx-3 m-lg-0"></i>
               </Link>
               <Link to="/profile" className="nav-link text-white">
