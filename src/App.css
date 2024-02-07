@@ -1,0 +1,161 @@
+body {
+  background-color: #221f1f;
+}
+
+h2,
+h4,
+footer {
+  color: #f5f5f1;
+}
+
+.icons {
+  cursor: pointer;
+}
+
+.navbar-nav {
+  font-size: 90%;
+}
+
+#kids {
+  color: #f5f5f1;
+  font-size: 0.8em;
+  cursor: pointer;
+}
+
+.footer-icon {
+  color: #838383;
+  cursor: pointer;
+}
+
+.footer-links {
+  font-size: 0.8em;
+}
+
+.footer-links button {
+  margin-bottom: 0.3em;
+  color: #838383;
+  background: none;
+  border: none;
+  display: block;
+  padding: 0;
+}
+
+.footer-button {
+  color: #838383;
+  border-color: #838383;
+}
+
+.copyright {
+  color: #838383;
+  font-size: 0.6em;
+}
+
+.thumbnail img {
+  height: 100%;
+}
+
+.thumbnail {
+  aspect-ratio: 16/9;
+  display: flex;
+  justify-content: center;
+}
+
+.thumbnail a {
+  transition: transform 0.2s;
+  display: flex;
+  justify-content: center;
+  background-color: #332f2f;
+  width: 100%;
+  cursor: pointer;
+}
+
+.thumbnail a:hover {
+  transform: scale(1.1);
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+/* /////////////////////////////////////////////////////////////////// */
+
+#profile {
+  width: 45%;
+  margin: 0 auto;
+  border: none;
+}
+@media screen and (max-width: 1400px) {
+  #profile {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 1200px) {
+  #profile {
+    width: 60%;
+  }
+}
+@media screen and (max-width: 992px) {
+  #profile {
+    width: 75%;
+  }
+}
+@media screen and (max-width: 768px) {
+  #profile {
+    width: 100%;
+  }
+}
+
+#language {
+  width: 100px;
+  height: 30px;
+  padding: 0;
+  padding-left: 10px;
+  padding-bottom: 3px;
+  cursor: pointer;
+}
+
+#edit-icon {
+  position: absolute;
+  bottom: 5%;
+  left: 5%;
+}
+
+#defaultCheck1,
+#defaultCheck2 {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+.text-spacing {
+  letter-spacing: 0.1rem;
+}
+
+/* /////////////////////////////////////////////////////////////////// */
+
+#settings {
+  width: 70%;
+  border: none;
+}
+@media screen and (max-width: 1400px) {
+  #settings {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 1200px) {
+  #settings {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 992px) {
+  #settings {
+    width: 100%;
+  }
+}
+
+.btn-membership {
+  background-color: rgb(209, 209, 209);
+  border: none;
+  padding: 10px 30px;
+  box-shadow: 0px 2px 3px -1px rgba(0, 0, 0, 0.75);
+}
